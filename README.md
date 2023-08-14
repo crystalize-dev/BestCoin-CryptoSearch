@@ -1,3 +1,6 @@
 # Todo:
 
-- Init
+- Page blocks
+- Backend
+- mobile adapt
+- small fixes

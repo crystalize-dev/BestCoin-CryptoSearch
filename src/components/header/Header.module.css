@@ -1,0 +1,134 @@
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100px;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 100%;
+
+    max-width: 130rem !important;
+    margin: 0 auto !important;
+    padding: 0 2.5rem !important;
+
+    color: var(--color-white);
+    font-family: var(--big-font);
+    font-size: 2rem;
+    font-weight: 700;
+}
+.fixed {
+    position: fixed;
+
+    background-color: var(--bg-black);
+    box-shadow: 0 10px 5px 0 rgba(0,0,0,.16);
+
+    z-index: 999999;
+}
+.header h1 {
+    font-size: 4rem;
+    cursor: pointer;
+}
+.header ul {
+    list-style: none;
+
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+
+    height: 100%;
+}
+.header ul li a {
+    color: var(--color-white);
+    font-weight: 700;
+}
+.header ul li a:hover {
+     transition: all 0.3s;
+    /*noinspection CssInvalidPropertyValue*/
+    background-clip: text;
+     -webkit-background-clip: text;
+     color: transparent;
+     background-image:var(--color-blue-purp)
+ }
+
+.socials {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 2.5rem;
+}
+.socials i, .openMobile i {
+    color: var(--color-white);
+    cursor: pointer;
+    font-size: 2.5rem;
+}
+.socials i:hover, .openMobile i:hover {
+    transition: all 0.3s;
+    /*noinspection CssInvalidPropertyValue*/
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image:var(--color-blue-purp)
+}
+
+.openMobile {
+    display: none;
+}
+.modalMobile {
+    position: fixed;
+    top: 0;
+    left: -100%;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+
+    width: 100%;
+    height: 100%;
+
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: var(--small-font);
+
+    background-color: white;
+    transition: all 0.2s ease 0s;
+}
+.close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+}
+
+.modalMobile a {
+    color: black;
+}
+.show {
+    left: 0;
+}
+
+.socialsMobile {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+@media (max-width: 980px) {
+    .socials, .header ul {
+        display: none;
+    }
+    .openMobile {
+        display: flex;
+    }
+    .modalMobile {
+        display: flex;
+    }
+}

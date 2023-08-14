@@ -2,6 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-blue-purp) white;
+
 }
 
 a, button, img {
@@ -10,5 +14,22 @@ a, button, img {
 }
 
 #root {
+  --color-purple: #ba04b7;
+  --color-white: #f3f2f4;
+  --color-blue-purp: linear-gradient(25deg, #2600fc, #ff00ea);
+  --bg-black: #0f051d;
+  --green: rgb(14, 203, 129);
 
+  --big-font: "Space Grotesk", sans-serif;
+  --small-font: "Noto Sans Georgian", sans-serif;
+
+  --h1-size: 7rem;
+  --h2-size: 6rem;
+  --h4-size: 2.2rem;
+  --text-normal: 2rem;
+  --text-mini: 1.8rem;
+}
+
+html {
+  font-size: 62.5%;
 }
