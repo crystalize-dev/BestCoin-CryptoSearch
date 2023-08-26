@@ -25,7 +25,7 @@ The website is connected to the Coingecko API, which is a popular source of data
 <h3 align='center'>Home Page 🏡</h3>
 
 <div align='center'>
-<img alt="" src='src/img/capture/fullCapture.png'/>
+<img alt="" src='src/img/capture/FullCapture.png'/>
 </div>
 
 <hr/>
