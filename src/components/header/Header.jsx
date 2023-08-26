@@ -13,7 +13,7 @@ const Header = ({onTop}) => {
 
                 <a href={"#home"} onClick={() => setModalMobile(false)}>Home</a>
                 <a href={"#market"} onClick={() => setModalMobile(false)}>Market</a>
-                <a href={"#choose"} onClick={() => setModalMobile(false)}>Choose us</a>
+                <a href={"#why"} onClick={() => setModalMobile(false)}>Choose us</a>
                 <a href={"#join"} onClick={() => setModalMobile(false)}>Join</a>
                 <div className={cl.socialsMobile}>
                     <a href={"https://vk.com/"} target={"_blank"} rel="noreferrer"
@@ -30,7 +30,7 @@ const Header = ({onTop}) => {
                     <ul>
                         <li><a href={"#home"}>Home</a></li>
                         <li><a href={"#market"}>Market</a></li>
-                        <li><a href={"#choose"}>Choose us</a></li>
+                        <li><a href={"#why"}>Choose us</a></li>
                         <li><a href={"#join"}>Join</a></li>
                     </ul>
 

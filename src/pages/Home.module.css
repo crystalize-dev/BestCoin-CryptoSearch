@@ -1,15 +1,19 @@
 .wrapper {
     position: relative;
 
-    background-image: linear-gradient(to top, var(--bg-black) 30%, #130749 70%);
-
     padding-top: 100px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
 
     width: 100%;
     height: 100vh;
 
     overflow-y: scroll;
     scroll-behavior: smooth;
+
+    background-color: var(--bg-black);
 }
 .wrapper::-webkit-scrollbar {
     width: 10px;
@@ -32,8 +36,8 @@
     user-select: none;
 }
 
-.container {
-    max-width: 130rem !important;
-    margin: 0 auto !important;
-    padding: 0 2.5rem !important;
+@media (max-width: 980px) {
+    .wrapper::-webkit-scrollbar {
+        display: none;
+    }
 }

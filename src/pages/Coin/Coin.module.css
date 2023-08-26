@@ -1,0 +1,138 @@
+.wrapper {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100vh;
+
+    background-image: linear-gradient(0deg, var(--bg-black) 30%,#130749 70%);
+
+    overflow-y: scroll;
+}
+.wrapper::-webkit-scrollbar {
+    width: 10px;
+
+    background: transparent;
+}
+.wrapper::-webkit-scrollbar-thumb {
+    background: var(--color-purple);
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    width: 100%;
+    height: fit-content;
+
+    max-width: 130rem !important;
+    margin: 0 auto !important;
+    padding: 10rem 2.5rem !important;
+}
+.container > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    border-radius: 10rem;
+    outline: 2px solid var(--color-purple);
+    color: var(--color-purple);
+
+    font-size: var(--text-normal);
+    font-weight: 600;
+    font-family: var(--small-font);
+
+    width: 150px;
+
+    padding: 1.5rem 2rem;
+
+    transition: all 0.3s ease 0s;
+}
+.container > a:hover {
+    background: var(--color-blue-purp);
+    outline: none;
+    color: var(--color-white);
+}
+
+.content {
+    margin-top: 10rem;
+
+    display: flex;
+    gap: 5rem;
+
+    width: 100%;
+    height: 100%;
+}
+
+.leftBlock, .rightBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    color: var(--color-white);
+    font-family: var(--big-font);
+}
+.leftBlock h1 {
+    font-size: 3.3rem;
+}
+.leftBlock p {
+    font-size: var(--text-normal);
+    font-weight: 500;
+}
+
+.rightBlock {
+    flex-grow: 1;
+}
+.rightBlockHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    font-size: var(--text-normal);
+}
+.rightBlockHeader p {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.redText {
+    color: red !important;
+}
+.greenText {
+    color: var(--green) !important;
+}
+
+.description {
+    font-size: var(--text-normal);
+}
+.description a {
+    text-decoration: underline;
+    color: var(--green);
+}
+
+
+@media (max-width: 980px) {
+    .wrapper {
+        background: var(--bg-black);
+    }
+    .wrapper::-webkit-scrollbar {
+        display: none;
+    }
+    .container {
+        padding: 5rem 2.5rem !important;
+    }
+    .content {
+        margin-top: 5rem;
+        flex-direction: column;
+    }
+    .rightBlockHeader {
+        flex-direction: column;
+        justify-content: unset;
+        gap: 2rem;
+    }
+}

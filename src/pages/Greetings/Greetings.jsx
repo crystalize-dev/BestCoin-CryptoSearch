@@ -2,67 +2,70 @@ import React, {useEffect, useState} from 'react';
 import cl from "./Greetings.module.css"
 import bitcoin from "../../img/currencies/bitcoin.png"
 import etherium from "../../img/currencies/etherium.png"
-import {useNavigate} from "react-router-dom"
+import {Link} from "react-router-dom"
 import axios from "axios";
-import {currencies} from "../../hardcode/currencies";
+import Loader from "../../components/loader/Loader";
+import {numberWithCommas} from "../../utility/numberWithCommas";
 
 
 const Greetings = () => {
-    const navigate = useNavigate()
-
-    const [data, setData] = useState(currencies);
+    const [data, setData] = useState([]);
     const [coinsLoad, setCoinsLoad] = useState(true);
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const response = await axios.get("http://localhost:3001/currencies4");
-    //
-    //             setData(response.data);
-    //             console.log(response.data)
-    //         } catch (error) {
-    //             console.log(error)
-    //         }
-    //     };
-    //
-    //     setCoinsLoad(true)
-    //     fetchData().then(() => {
-    //         setCoinsLoad(false)
-    //     });
-    // }, []);
+    useEffect(() => {
+        const fetchData = async () => {
+            setCoinsLoad(true)
 
-    function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
+            try {
+                const response = await axios.get("http://localhost:3001/currencies?amount=4");
+
+                setCoinsLoad(false)
+                await setData(response.data);
+            } catch (error) {
+                setTimeout(fetchData, 60000);
+            }
+        };
+
+        fetchData()
+    }, []);
 
     return (
         <div className={cl.wrapper}>
-            <div className={cl.textArea}>
-                <img alt={"btc"} src={bitcoin} draggable={false}/>
-                <div>
-                    <h1>TRACK AND TRADE </h1>
-                    <h1><span>CRYPTO CURRENCIES</span></h1>
+            <div className={cl.container}>
+                <div className={cl.textArea}>
+                    <img alt={"btc"} src={bitcoin} draggable={false}/>
+                    <div>
+                        <h1>TRACK AND TRADE </h1>
+                        <h1><span>CRYPTO CURRENCIES</span></h1>
+                    </div>
+                    <img alt={"eth"} src={etherium} draggable={false}/>
                 </div>
-                <img alt={"eth"} src={etherium} draggable={false}/>
-            </div>
 
-            <div className={cl.exchange}>
-                {data.map(currency =>
-                    <div onClick={() => navigate(`/${currency.name}`)} className={cl.exchangeItem} key={currency.name}>
-                        <img alt={"coin"} src={currency.image} draggable={false}/>
-                        <h1>
-                            {currency.name}
-                            <span className={currency.market_cap_change_percentage_24h < 0 ? cl.redText : cl.greenText}>
+                {coinsLoad
+                    ?
+                    <Loader/>
+                    :
+                    <div className={cl.exchange}>
+                        {data.map(currency =>
+                            <Link to={currency.name} className={cl.exchangeItem}
+                                  key={currency.name}>
+                                <img alt={"coin"} src={currency.image} draggable={false}/>
+                                <h1>
+                                    {currency.name}
+                                    <span
+                                        className={currency.market_cap_change_percentage_24h < 0 ? cl.redText : cl.greenText}>
                                 {currency.market_cap_change_percentage_24h.toFixed(2) + "%"}
-                            </span>
-                        </h1>
-                        <p>{"$" +
-                            numberWithCommas(
-                                currency.current_price.toFixed(2)
-                            )}</p>
-                    </div>)}
+                                    </span>
+                                </h1>
+                                <p>{"$" +
+                                    numberWithCommas(
+                                        currency.current_price.toFixed(2)
+                                    )}</p>
+                            </Link>)}
 
-                <a href={"#market"}>See Prices <i className="fa-solid fa-chevron-down"></i></a>
+                        <a href={"#market"} className={cl.button}>See Prices <i
+                            className="fa-solid fa-chevron-down"></i></a>
+                    </div>}
             </div>
         </div>
     );
