@@ -101,9 +101,17 @@
     gap: 1rem;
 }
 .redText {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
     color: red !important;
 }
 .greenText {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
     color: var(--green) !important;
 }
 

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import cl from "./Market.module.css"
 import axios from "axios";
 import Loader from "../../components/loader/Loader";
@@ -6,12 +6,14 @@ import {numberWithCommas} from "../../utility/numberWithCommas";
 import {Link} from "react-router-dom";
 import classNames from "classnames";
 import Pagination from "../../components/pagination/Pagination";
+import {LangContext} from "../../context/LangContext";
 
 
 const Market = ({id}) => {
     const [currentPage, setCurrentPage] = useState(1)
     const [data, setData] = useState([])
     const [coinsLoad, setCoinsLoad] = useState(true)
+    const {lang} = useContext(LangContext)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -33,14 +35,14 @@ const Market = ({id}) => {
     return (
         <div id={id} className={cl.wrapper}>
             <div className={cl.container}>
-                <h1>Market update</h1>
+                <h1>{lang === 'ru' ? "Торговая площадка" : "Market update"}</h1>
 
                 <div className={coinsLoad ? classNames(cl.table, cl.loading) : cl.table}>
                     <div className={cl.row}>
-                        <h1 className={cl.coin}>Coin</h1>
-                        <div className={cl.price}>Price</div>
-                        <div className={cl.change}>24h Change</div>
-                        <p>Market Cap</p>
+                        <h1 className={cl.coin}>{lang === "ru" ? "Валюта" : "Coin"}</h1>
+                        <div className={cl.price}>{lang === 'ru' ? "Цена" : "Price"}</div>
+                        <div className={cl.change}>{lang === "ru" ? "24ч изменение" : "24h Change"}</div>
+                        <p>{lang === "ru" ? "Капитализация" : "Market Cap"}</p>
                     </div>
                     {coinsLoad
                         ?
@@ -58,6 +60,11 @@ const Market = ({id}) => {
 
                                     <div
                                         className={coin.market_cap_change_percentage_24h < 0 ? classNames(cl.change, cl.redText) : classNames(cl.change, cl.greenText)}>
+                                        {coin.market_cap_change_percentage_24h < 0
+                                            ?
+                                            <i className="fa-solid fa-caret-down"></i>
+                                            :
+                                            <i className="fa-solid fa-caret-up"></i>}
                                         {coin.market_cap_change_percentage_24h.toFixed(2) + "%"}
                                     </div>
 

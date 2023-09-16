@@ -1,0 +1,17 @@
+.lang {
+    color: var(--color-white);
+    font-size: 2rem;
+    cursor: pointer;
+    margin-bottom: 4px;
+}
+.lang:hover {
+    transition: all 0.3s;
+    /*noinspection CssInvalidPropertyValue*/
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image:var(--color-blue-purp)
+}
+.underline:hover {
+    text-decoration: underline;
+}
