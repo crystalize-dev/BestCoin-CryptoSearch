@@ -1,12 +1,12 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import cl from "./Join.module.css"
 import bitcoin from "../../img/currencies/bitcoin.png";
 import etherium from "../../img/currencies/etherium.png";
-import {LangContext} from "../../context/LangContext";
+import {useTranslation} from "i18nano";
 
 
 const Join = ({id}) => {
-    const {lang} = useContext(LangContext)
+    const text = useTranslation()
 
     return (
         <div id={id} className={cl.wrapper}>
@@ -14,14 +14,14 @@ const Join = ({id}) => {
                 <div className={cl.textArea}>
                     <img alt={"btc"} src={bitcoin} draggable={false}/>
                     <div>
-                        <h1>{lang === "ru" ? "ПОДЛЮЧАЙТЕСЬ В" : "JOIN VIA"}</h1>
-                        <h1><span>{lang === "ru" ? "ДИСКОРДЕ" : "DISCORD"}</span></h1>
-                        <p>{lang === 'ru' ? "Инвестируйте и управляйте всеми своими криптовалютами в одном месте" : "Invest and manage all your crypto at one place"}</p>
+                        <h1>{text('join.header.uncolored')}</h1>
+                        <h1><span>{text('join.header.colored')}</span></h1>
+                        <p>{text('join.description')}</p>
                     </div>
                     <img alt={"eth"} src={etherium} draggable={false}/>
                 </div>
 
-                <a href={"https://discord.com/"} target={"_blank"} rel="noreferrer">{lang === 'ru' ? "Подключиться" : "Join via Discord"}</a>
+                <a href={"https://discord.com/"} target={"_blank"} rel="noreferrer">{text('join.full')}</a>
             </div>
         </div>
     );

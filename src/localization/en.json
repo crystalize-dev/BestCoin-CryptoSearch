@@ -1,0 +1,47 @@
+{
+  "lang": "Language",
+  "langName": "English",
+
+  "header.links.home": "Home",
+  "header.links.market": "Market",
+  "header.links.choose": "Choose us",
+  "header.links.join": "Join",
+
+  "greeting.colored": "CRYPTO CURRENCIES",
+  "greeting.uncolored": "TRACK AND TRADE ",
+  "greeting.button": "See Prices",
+
+  "market.header": "Market update",
+
+  "coin": "Coin",
+  "price": "Price",
+  "24h": "24h Change",
+  "cap": "Market Cap",
+
+  "why.header.colored": "CHOOSE US",
+  "why.header.uncolored": "WHY ",
+  "why.card1.header": "CONNECT YOUR WALLET",
+  "why.card1.text": "Use Trust Wallet, Metamask or to connect to the app",
+  "why.card2.header": "UPLOAD YOUR QUANTITY",
+  "why.card2.text": "Upload your crypto and set a title, description and price",
+  "why.card3.header": "CONFIRM TRANSACTION",
+  "why.card3.text": "Earn by selling your crypto on our marketplace",
+  "why.card4.header": "RECEIVE YOUR OWN NFTS",
+  "why.card4.text": "Invest all your crypto at one place on one platform",
+  "why.card5.header": "TAKE A MARKET TO SELL",
+  "why.car5.text": "Discover, collect the right crypto collections to buy or sell",
+  "why.card6.header": "DRIVE YOUR COLLECTION",
+  "why.card6.text": "We make it easy to Discover, Invest and manage",
+
+  "join.header.colored": "DISCORD",
+  "join.header.uncolored": "JOIN VIA",
+  "join.full": "Join via Discord",
+  "join.description": "Invest and manage all your crypto at one place",
+
+  "footer.privacy": "Privacy",
+  "footer.terms": "Terms of use",
+
+  "coin.back": "Go Back",
+  "coin.rank": "Rank",
+  "coin.symbol": "Symbol"
+}

@@ -123,6 +123,7 @@
     transition: all .2s;
 
     width: 25rem;
+    white-space: nowrap;
 }
 
 @media (max-width: 1300px) {

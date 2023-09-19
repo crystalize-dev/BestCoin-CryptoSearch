@@ -1,36 +1,17 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React from 'react';
 import cl from "./Greetings.module.css"
 import bitcoin from "../../img/currencies/bitcoin.png"
 import etherium from "../../img/currencies/etherium.png"
 import {Link} from "react-router-dom"
-import axios from "axios";
 import Loader from "../../components/loader/Loader";
 import {numberWithCommas} from "../../utility/numberWithCommas";
-import {LangContext} from "../../context/LangContext";
+import {useFetch} from "../../hooks/useFetch";
+import {useTranslation} from "i18nano";
 
 
 const Greetings = () => {
-    const [data, setData] = useState([]);
-    const [coinsLoad, setCoinsLoad] = useState(true);
-
-    const {lang} = useContext(LangContext)
-
-    useEffect(() => {
-        const fetchData = async () => {
-            setCoinsLoad(true)
-
-            try {
-                const response = await axios.get("http://localhost:3001/currencies?amount=4");
-
-                setCoinsLoad(false)
-                await setData(response.data);
-            } catch (error) {
-                setTimeout(fetchData, 60000);
-            }
-        };
-
-        fetchData()
-    }, []);
+    const {data, coinsLoad} = useFetch("http://localhost:3001/currencies?amount=4")
+    const text = useTranslation()
 
     return (
         <div className={cl.wrapper}>
@@ -38,8 +19,8 @@ const Greetings = () => {
                 <div className={cl.textArea}>
                     <img alt={"btc"} src={bitcoin} draggable={false}/>
                     <div>
-                        <h1>{lang === "ru" ? "Отслеживай и продавай " : "TRACK AND TRADE "}</h1>
-                        <h1><span>{lang === "ru" ? "Криптовалюту" : "CRYPTO CURRENCIES"}</span></h1>
+                        <h1>{text('greeting.uncolored')}</h1>
+                        <h1><span>{text('greeting.colored')}</span></h1>
                     </div>
                     <img alt={"eth"} src={etherium} draggable={false}/>
                 </div>
@@ -71,7 +52,7 @@ const Greetings = () => {
                                     )}</p>
                             </Link>)}
 
-                        <a href={"#market"} className={cl.button}>See Prices <i
+                        <a href={"#market"} className={cl.button}>{text('greeting.button')}<i
                             className="fa-solid fa-chevron-down"></i></a>
                     </div>}
             </div>

@@ -1,10 +1,10 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import cl from "./Footer.module.css"
-import {LangContext} from "../../context/LangContext";
+import {useTranslation} from "i18nano";
 
 
 const Footer = ({id}) => {
-    const {lang} = useContext(LangContext)
+    const text = useTranslation()
 
     return (
         <footer id={id} className={cl.footer}>
@@ -15,8 +15,8 @@ const Footer = ({id}) => {
                     <a href={"https://www.youtube.com/"} target={"_blank"} rel="noreferrer"><i className="fa-brands fa-youtube"></i></a>
                 </div>
                 <div className={cl.text}>
-                    <p>{lang === 'ru' ? "Конфиденциальность" : "Privacy"}</p>
-                    <p>{lang === 'ru' ? "Условия пользования" : "Terms of Use"}</p>
+                    <p>{text('footer.privacy')}</p>
+                    <p>{text('footer.terms')}</p>
                 </div>
             </div>
         </footer>

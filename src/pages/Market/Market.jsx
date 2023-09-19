@@ -1,48 +1,31 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import cl from "./Market.module.css"
-import axios from "axios";
 import Loader from "../../components/loader/Loader";
 import {numberWithCommas} from "../../utility/numberWithCommas";
 import {Link} from "react-router-dom";
 import classNames from "classnames";
 import Pagination from "../../components/pagination/Pagination";
-import {LangContext} from "../../context/LangContext";
+import {useFetch} from "../../hooks/useFetch";
+import {useTranslation} from "i18nano";
 
 
 const Market = ({id}) => {
     const [currentPage, setCurrentPage] = useState(1)
-    const [data, setData] = useState([])
-    const [coinsLoad, setCoinsLoad] = useState(true)
-    const {lang} = useContext(LangContext)
+    const {coinsLoad, data} = useFetch("http://localhost:3001/currencies?amount=100")
 
-    useEffect(() => {
-        const fetchData = async () => {
-            setCoinsLoad(true)
-
-            try {
-                const response = await axios.get(`http://localhost:3001/currencies?amount=100`);
-
-                setData(response.data);
-                setCoinsLoad(false)
-            } catch (error) {
-                setTimeout(fetchData, 60000);
-            }
-        };
-
-        fetchData()
-    }, []);
+    const text = useTranslation()
 
     return (
         <div id={id} className={cl.wrapper}>
             <div className={cl.container}>
-                <h1>{lang === 'ru' ? "Торговая площадка" : "Market update"}</h1>
+                <h1>{text('market.header')}</h1>
 
                 <div className={coinsLoad ? classNames(cl.table, cl.loading) : cl.table}>
                     <div className={cl.row}>
-                        <h1 className={cl.coin}>{lang === "ru" ? "Валюта" : "Coin"}</h1>
-                        <div className={cl.price}>{lang === 'ru' ? "Цена" : "Price"}</div>
-                        <div className={cl.change}>{lang === "ru" ? "24ч изменение" : "24h Change"}</div>
-                        <p>{lang === "ru" ? "Капитализация" : "Market Cap"}</p>
+                        <h1 className={cl.coin}>{text('coin')}</h1>
+                        <div className={cl.price}>{text('price')}</div>
+                        <div className={cl.change}>{text('24h')}</div>
+                        <p>{text('cap')}</p>
                     </div>
                     {coinsLoad
                         ?

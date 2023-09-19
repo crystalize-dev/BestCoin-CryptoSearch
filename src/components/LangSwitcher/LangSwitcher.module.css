@@ -3,6 +3,7 @@
     font-size: 2rem;
     cursor: pointer;
     margin-bottom: 4px;
+    font-family: "Space Grotesk", sans-serif;
 }
 .lang:hover {
     transition: all 0.3s;

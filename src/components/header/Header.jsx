@@ -1,23 +1,23 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import cl from "./Header.module.css"
 import classNames from "classnames";
 import LangSwitcher from "../LangSwitcher/LangSwitcher";
-import {LangContext} from "../../context/LangContext";
+import {useTranslation} from "i18nano";
 
 
 const Header = ({onTop}) => {
     const [modalMobile, setModalMobile] = useState(false)
-    const {lang} = useContext(LangContext)
+    const text = useTranslation()
 
     return (
         <>
             <div className={modalMobile ? classNames(cl.modalMobile, cl.show) : cl.modalMobile}>
                 <i className={classNames("fa-solid fa-xmark", cl.close)} onClick={() => setModalMobile(false)}></i>
 
-                <a href={"#home"} onClick={() => setModalMobile(false)}>{lang === 'ru' ? 'Главная' : "Home"}</a>
-                <a href={"#market"} onClick={() => setModalMobile(false)}>{lang === "ru" ? 'Маркет' : "Market"}</a>
-                <a href={"#why"} onClick={() => setModalMobile(false)}>{lang === "ru" ? "Почему мы?" : "Choose us"}</a>
-                <a href={"#join"} onClick={() => setModalMobile(false)}>{lang === "ru" ? "Присоединйся" : "Join"}</a>
+                <a href={"#home"} onClick={() => setModalMobile(false)}>{text('header.links.home')}</a>
+                <a href={"#market"} onClick={() => setModalMobile(false)}>{text('header.links.market')}</a>
+                <a href={"#why"} onClick={() => setModalMobile(false)}>{text('header.links.choose')}</a>
+                <a href={"#join"} onClick={() => setModalMobile(false)}>{text('header.links.join')}</a>
                 <LangSwitcher text={true} className={cl.langSwitcher}/>
                 <div className={cl.socialsMobile}>
                     <a href={"https://vk.com/"} target={"_blank"} rel="noreferrer"
@@ -32,10 +32,10 @@ const Header = ({onTop}) => {
                     <h1>BESTCOIN</h1>
 
                     <ul>
-                        <li><a href={"#home"}>{lang === 'ru' ? 'Главная' : "Home"}</a></li>
-                        <li><a href={"#market"}>{lang === "ru" ? 'Маркет' : "Market"}</a></li>
-                        <li><a href={"#why"}>{lang === "ru" ? "Почему мы?" : "Choose us"}</a></li>
-                        <li><a href={"#join"}>{lang === "ru" ? "Присоединйся" : "Join"}</a></li>
+                        <li><a href={"#home"}>{text('header.links.home')}</a></li>
+                        <li><a href={"#market"}>{text('header.links.market')}</a></li>
+                        <li><a href={"#why"}>{text('header.links.choose')}</a></li>
+                        <li><a href={"#join"}>{text('header.links.join')}</a></li>
                     </ul>
 
                     <div className={cl.socials}>
