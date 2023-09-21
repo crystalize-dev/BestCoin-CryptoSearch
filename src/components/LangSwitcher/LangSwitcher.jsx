@@ -29,7 +29,7 @@ const LangSwitcher = ({className, text}) => {
         <p className={classNames(cl.lang, className)} onClick={switchLang}>
             {text ? localText('lang') + ": " : null}
 
-            <span className={text ? cl.underline : null}>{text ? localText('langName') : lang.lang}</span>
+            <span className={text ? cl.underline : null}>{!lang.lang ? "ru" : text ? localText('langName') : lang.lang}</span>
         </p>
     );
 };
