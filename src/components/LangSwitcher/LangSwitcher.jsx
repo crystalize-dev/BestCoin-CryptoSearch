@@ -15,7 +15,7 @@ const LangSwitcher = ({className, text}) => {
             if (language) lang.change(language)
             else lang.change('ru')
         }
-    })
+    }, [])
 
     useEffect(() => {
         localStorage.setItem('lang', lang.lang)
