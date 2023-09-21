@@ -9,7 +9,12 @@ const LangSwitcher = ({className, text}) => {
     const localText = useTranslation()
 
     useEffect(() => {
-        if (!lang.lang) lang.change(localStorage.getItem('lang'))
+        if (!lang.lang) {
+            let language = localStorage.getItem('lang')
+
+            if (language) lang.change(language)
+            else lang.change('ru')
+        }
     })
 
     useEffect(() => {
