@@ -14,7 +14,6 @@ export const useFetch = (url) => {
                 const response = await axios.get(url);
 
                 setCoinsLoad(false)
-                console.log(response.data)
                 await setData(response.data);
             } catch (error) {
                 setTimeout(fetchData, 60000);

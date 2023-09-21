@@ -51,7 +51,6 @@
     grid-gap: 2rem;
     gap: 2rem;
     align-items: center;
-    padding: 2.5rem 1.5rem;
 
     background-color: var(--bg-black);
 
@@ -59,7 +58,7 @@
     font-size: 2.2rem;
     font-weight: 500;
 
-    height: auto;
+    height: 10rem;
     width: 100%;
 
     text-align: right;
@@ -67,23 +66,22 @@
     user-select: none;
     white-space: nowrap;
 }
-.row:not(:last-child) {
+.row:not(:last-child):not(:first-child) {
     border-bottom: 1px solid var(--color-white);
 }
 .row:hover {
     background-color: #200840;
 }
 .row:first-child {
-    padding: 1.5rem;
-
     background: var(--color-blue-purp);
-
-    border-radius: 8px 8px 0 0;
 }
 .row:first-child h1 {
     color: var(--color-white);
     font-size: var(--h4-size);
     font-weight: 500;
+}
+.row:first-child .coin {
+    backdrop-filter: blur(15px);
 }
 .row > * {
     display: flex;
@@ -93,6 +91,10 @@
     display: flex;
     align-items: center;
     gap: 2rem;
+
+    padding: 0 1.5rem;
+
+    height: 100%;
 }
 .coin h1 {
     color: var(--color-white);
@@ -117,17 +119,45 @@
 }
 .price, .change, .row p {
     margin-left: auto;
+    padding: 0 1.5rem;
 }
 
 
 @media (max-width: 980px) {
-    .table::-webkit-scrollbar {
-        display: none;
-    }
     .row {
-        width: 820px;
+        font-size: 1.2rem;
+        width:fit-content;
+        gap: 2rem;
+    }
+    .row:hover {
+        background-color: unset;
+    }
+    .row:first-child {
+        position: sticky;
+        top: 0;
+    }
+    .row:not(:first-child) .coin {
+        background-color: var(--bg-black);
     }
     .coin {
-        width: 200px;
+        position: sticky;
+        left: 0;
+        min-width: 180px;
+    }
+    .price {
+        width: 100px;
+    }
+    .change {
+        width: 100px;
+    }
+    .row p {
+        width: 150px;
+    }
+    .coin h1 {
+        font-size: 1.2rem;
+    }
+    .coin img {
+        width: 3rem;
+        height: 3rem;
     }
 }

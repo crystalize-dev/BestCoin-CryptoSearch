@@ -41,8 +41,7 @@ const Market = ({id}) => {
 
                                     <div className={cl.price}>{"$ " + coin.current_price.toFixed(2)}</div>
 
-                                    <div
-                                        className={coin.market_cap_change_percentage_24h < 0 ? classNames(cl.change, cl.redText) : classNames(cl.change, cl.greenText)}>
+                                    <div className={coin.market_cap_change_percentage_24h < 0 ? classNames(cl.change, cl.redText) : classNames(cl.change, cl.greenText)}>
                                         {coin.market_cap_change_percentage_24h < 0
                                             ?
                                             <i className="fa-solid fa-caret-down"></i>
