@@ -12,7 +12,7 @@ import LangSwitcher from "../../components/LangSwitcher/LangSwitcher";
 const Coin = () => {
     const params = useParams()
     const coinName = params.coinName.toLowerCase()
-    const {data, coinsLoad} = useFetch(`http://localhost:3001/coin?name=${coinName}`)
+    const {data, coinsLoad} = useFetch(`https://api.coingecko.com/api/v3/coins/${coinName}`)
     const h24 = data.market_data ? data.market_data.price_change_24h : "";
 
     const text = useTranslation()

@@ -11,7 +11,7 @@ import {useTranslation} from "i18nano";
 
 const Market = ({id}) => {
     const [currentPage, setCurrentPage] = useState(1)
-    const {coinsLoad, data} = useFetch("http://localhost:3001/currencies?amount=100")
+    const {coinsLoad, data} = useFetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false")
 
     const text = useTranslation()
 
