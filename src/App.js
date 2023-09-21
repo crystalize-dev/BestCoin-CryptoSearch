@@ -9,7 +9,8 @@ function App() {
         <TranslationProvider translations={translations}
                              transition={true}
                              preloadFallback={true}
-                             fallback={'ru'}>
+                             fallback={'ru'}
+                             language={'ru'}>
             <AppRouter/>
         </TranslationProvider>
     );
