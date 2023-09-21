@@ -12,8 +12,6 @@ const LangSwitcher = ({className, text}) => {
         if (!lang.lang) {
             let language = localStorage.getItem('lang')
 
-            console.log(language)
-
             if (language) lang.change(language)
             else lang.change('ru')
         }
