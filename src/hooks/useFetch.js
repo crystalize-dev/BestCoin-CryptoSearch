@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 
+
 export const useFetch = (url) => {
     const [data, setData] = useState([]);
     const [coinsLoad, setCoinsLoad] = useState(true);
@@ -13,7 +14,7 @@ export const useFetch = (url) => {
                 const response = await axios.get(url);
 
                 setCoinsLoad(false)
-                await setData(response.data);
+                await setData(response.data.json());
             } catch (error) {
                 setTimeout(fetchData, 60000);
             }

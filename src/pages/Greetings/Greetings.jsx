@@ -10,7 +10,7 @@ import {useTranslation} from "i18nano";
 
 
 const Greetings = () => {
-    const {data, coinsLoad} = useFetch("http://localhost:3001/currencies?amount=4")
+    const {data, coinsLoad} = useFetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=4&page=1&sparkline=false")
     const text = useTranslation()
 
     return (
